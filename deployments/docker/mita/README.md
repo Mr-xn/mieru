@@ -4,13 +4,32 @@
 
 ## 使用方法
 
+### 使用 GitHub Container Registry 预构建镜像
+
+从 GitHub Container Registry 拉取并使用预构建的镜像：
+
+```bash
+# 拉取最新版本
+docker pull ghcr.io/mr-xn/mieru/mita:main
+
+# 或者拉取特定版本（例如 v3.26.0）
+docker pull ghcr.io/mr-xn/mieru/mita:v3.26.0
+
+# 运行容器
+docker run -d \
+  -p 27017-27019:27017-27019/udp \
+  -e USERNAME=myuser \
+  -e PASSWORD=mypassword \
+  ghcr.io/mr-xn/mieru/mita:main
+```
+
 ### 使用 docker-compose
 
 ```bash
 docker-compose up -d
 ```
 
-### 使用 docker run
+### 使用 docker run 本地构建
 
 ```bash
 docker build -t mita .
@@ -59,3 +78,14 @@ environment:
 - MTU：1400
 
 如果不设置环境变量，将使用配置文件中的默认值。
+
+## Docker 镜像发布
+
+Docker 镜像会自动构建并发布到 GitHub Container Registry (ghcr.io)：
+
+- 当推送标签（如 `v3.26.0`）时，会构建并发布带版本号的镜像
+- 当推送到 `main` 分支时，会更新 `main` 标签的镜像
+- 镜像支持多平台：`linux/amd64` 和 `linux/arm64`
+
+查看所有可用版本：https://github.com/Mr-xn/mieru/pkgs/container/mieru%2Fmita
+

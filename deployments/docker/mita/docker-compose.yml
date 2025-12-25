@@ -1,5 +1,8 @@
 services:
   mita:
+    # Use pre-built image from GitHub Container Registry
+    # image: ghcr.io/mr-xn/mieru/mita:main
+    # Or build locally from Dockerfile
     build: .
     image: mita
     container_name: mita
