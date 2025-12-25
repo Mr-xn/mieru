@@ -14,3 +14,7 @@ services:
       - 27017-27019:27017-27019/udp
     environment:
       - TZ=Asia/Shanghai
+      # Optional: Override default configuration values
+      # - USERNAME=your_username
+      # - PASSWORD=your_password
+      # - PROTOCOL=TCP
