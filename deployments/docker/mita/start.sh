@@ -36,7 +36,7 @@ if [ -n "$PROTOCOL" ]; then
         exit 1
     fi
     echo "Setting protocol to: $PROTOCOL"
-    sed -i "s/\"protocol\": *\"UDP\"/\"protocol\": \"$PROTOCOL\"/g" "$TEMP_CONFIG"
+    sed -i "s/\"protocol\": *\"\\(UDP\\|TCP\\)\"/\"protocol\": \"$PROTOCOL\"/g" "$TEMP_CONFIG"
 fi
 
 mita run &
